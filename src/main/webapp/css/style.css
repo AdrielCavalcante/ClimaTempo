@@ -1,0 +1,31 @@
+body {
+	background: linear-gradient(to right, rgb(142 243 243) , rgb(0, 128, 192));
+}
+
+body h1 {
+	font-size: 3.5rem;
+	color: #FFF;
+	text-align: center;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
+
+body .modal-header h1 {
+	color: #000;
+	margin: 0;
+}
+
+body strong {
+	font-size: 1.5rem;
+	color: #FFF;
+}
+
+body .card {
+	border-radius: 12px;
+}
+
+body .list-group .list-group-item {
+	padding: .75rem 0;
+	background-color: transparent;
+	border-color: #DEDEDE;
+}
