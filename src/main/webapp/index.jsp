@@ -18,7 +18,7 @@
 	
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
+	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h1 class="modal-title fs-5" id="exampleModalLabel">Consulta de clima tempo</h1>
@@ -28,7 +28,6 @@
 		      <div class="modal-body">
 					<label for="cidade" class="form-label">Insira o nome de uma cidade:</label>
 					<input class="form-control" type="text" id="cidade" name="cidade" required>
-			      	<p>Cansado de preencher esse campo? Cadastre-se: <a href="cadastro.jsp">Cadastro</a></p>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

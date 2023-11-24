@@ -67,9 +67,7 @@ public class ConsultaClima extends jakarta.servlet.http.HttpServlet {
 		try {
             // Cria uma URL com a URL da API
 			URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q="+ cidade +"&appid=b99f08a3b28407a8b6515ebe2fd8f05c&lang=pt_br");
-			
-			URL urlPrevisaoDias = new URL("https://api.openweathermap.org/data/2.5/forecast?q="+ cidade +"&appid=b99f08a3b28407a8b6515ebe2fd8f05c&lang=pt_br");
-			
+
             // Abre uma conexão HTTP com a URL
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -100,32 +98,6 @@ public class ConsultaClima extends jakarta.servlet.http.HttpServlet {
             // Fecha a conexão
             connection.disconnect();
 
-            HttpURLConnection connectionPrevisaoDias = (HttpURLConnection) urlPrevisaoDias.openConnection();
-            
-            connectionPrevisaoDias.setRequestMethod("GET");
-            connectionPrevisaoDias.setConnectTimeout(5000);
-            connectionPrevisaoDias.setReadTimeout(5000);
-            // Previsão dos 5 dias
-            int responseCodePrevisaoDias = connectionPrevisaoDias.getResponseCode();
-
-            if (responseCodePrevisaoDias == 200) { // 200 OK
-                // Lê a resposta da API
-                BufferedReader reader2 = new BufferedReader(new InputStreamReader(connectionPrevisaoDias.getInputStream()));
-                String line2;
-
-                while ((line2 = reader2.readLine()) != null) {
-                    respostaPrevisaoDias.append(line2);
-                }
-                
-                reader2.close();
-            } else if(responseCodePrevisaoDias == 404) { // 404 Not found
-            	respostaPrevisaoDias.append("Cidade não encontrada");
-            } else {
-            	System.out.println("Erro na requisição: Código de resposta " + responseCodePrevisaoDias);
-            }
-
-            // Fecha a conexão
-            connectionPrevisaoDias.disconnect();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -141,10 +113,7 @@ public class ConsultaClima extends jakarta.servlet.http.HttpServlet {
 		    }
 		
 		HttpSession session = request.getSession();
-		System.out.println("Dias: " + respostaPrevisaoDias);
-		System.out.println("Resposta da Previsão de Dias: " + respostaPrevisaoDias.toString());
 		session.setAttribute("respostaAPI", resposta.toString());
-		session.setAttribute("respostaAPIdias", respostaPrevisaoDias.toString());
 
 		response.sendRedirect("res.jsp");
 	}
